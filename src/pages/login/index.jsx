@@ -1,14 +1,42 @@
 import { Link } from "wouter";
 import styles from "./Login.module.css";
+import { useForm } from "react-hook-form";
+import { login } from "@services/api"
+import { useState } from "react";
+import { useStore } from "@state/useStore"
+import { useLocation } from "wouter";
 
 const Login = () => {
-    //const [error, setError] = useState(false);
-    let error = false
+    const [error, setError] = useState(false);
+    const {register, handleSubmit} = useForm()
+    const [location, setLocation] = useLocation()
+
+    const setAuthToken = useStore((state) => state.setAuthToken);
+
+    const onSubmit = async(data) => {
+        const {email, password} = data
+
+        const body = {
+            "email": email,
+            "password": password
+        }
+
+        const response = await login(body)
+        console.log(response)
+        if(response.message === 'Unauthorized') {
+            setError(true)
+            return
+        }
+        setAuthToken(response.access_token)
+        setError(false)
+        setLocation("/dashboard")
+    } 
+
     return (
         <main className={styles.container}>
             <div className={styles.content}>
                 <h1 className={styles.title}>Inicia sesión</h1>
-                <form action="" onSubmit={() => { }}>
+                <form onSubmit={handleSubmit(onSubmit)}>
                     {error ? <p className={styles.error}>{"Correo o contraseña no valido"}</p> : null}
                     <div className={styles.section_content}>
                         <div className={styles.icon}>
@@ -31,10 +59,10 @@ const Login = () => {
                         </div>
 
                         <input
-                            type="text"
-                            name="username"
+                            type="email"
+                            {...register("email")}
                             id="userName"
-                            placeholder="Nombre de usuario"
+                            placeholder="Email"
                             required
                         />
                     </div>
@@ -61,9 +89,9 @@ const Login = () => {
 
                         <input
                             type="password"
-                            name="password"
+                            {...register("password")}
                             id="userPassword"
-                            placeholder="contraseña"
+                            placeholder="Contraseña"
                             required
                         />
                     </div>

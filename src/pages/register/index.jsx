@@ -6,7 +6,6 @@ import { useLocation } from "wouter";
 import { registerUser } from "@services/api"
 import SmallInput from "./components/smallInput";
 const Register = () => {
-
     const [location, setLocation] = useLocation()
     const [state, setState] = useState({
         rol: "",

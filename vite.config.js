@@ -6,7 +6,8 @@ const aliases = {
   '@pages': '/src/pages',
   '@hooks': '/src/hooks',
   '@constants': '/src/constants',
-  '@services': "/src/services"
+  '@services': "/src/services",
+  '@state': '/src/state'
 };
 
 export default defineConfig({
