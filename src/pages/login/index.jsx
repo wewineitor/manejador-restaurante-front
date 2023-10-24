@@ -78,7 +78,7 @@ const Login = () => {
                         </Link>{" "}
                     </h2>
                     <div className={styles.bt_regis_section}></div>
-                    <Link href={"/registro"}>
+                    <Link href={"/register"}>
                         <button className={`${styles.bt} ${styles.bt_regis}`}>
                             Registrate
                         </button>

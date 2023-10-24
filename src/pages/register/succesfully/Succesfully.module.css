@@ -1,0 +1,51 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    text-align: center;
+
+    background: rgb(183,131,58);
+    background: radial-gradient(circle, rgba(183,131,58,1) 0%, rgba(160,75,38,1) 49%, rgba(120,64,52,1) 100%);
+}
+.container h1{
+    font-size: 3rem;
+    color: var(--claro);
+}
+.container h2{
+    font-size: 2rem;
+    text-transform: uppercase;
+    color: var(--claro);
+}
+.usuario{
+    margin: 0;
+    font-size: 3rem;
+    color: var(--claro);
+    background-color: rgba(var(--principal),0.9);
+    border-radius: 1rem;
+    padding: 1rem;
+
+}
+.bt{
+    margin: 2rem 0;
+    text-decoration: none;
+    color: var(--claro);
+    text-transform: uppercase;
+    background-color: var(--complementario);
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 1rem;
+    font-size: 2rem;
+
+    transition: 300ms;
+    transition-property: all;
+}
+.bt:hover{
+    cursor: pointer;
+    background-color: var(--letrasclaro);
+    color: var(--oscuro);
+
+    transition: 300ms;
+    transition-property: all;
+}

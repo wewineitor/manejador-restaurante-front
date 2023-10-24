@@ -1,0 +1,5 @@
+.option {
+    background-color: var(--oscuro);
+    color: var(--claro);
+    border: none;
+}
